@@ -16,12 +16,13 @@ def send_request(url):
     except Exception as e:
         e
 
-number = 150
+number = 162
 while(number < 1000):
     url = "http://www.dizipal" + str(number) + ".com/"
     website = send_request(url)
     if(website != None):
         print(website)
+
         exit()
     else:
         number += 1
