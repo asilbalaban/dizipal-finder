@@ -17,7 +17,7 @@ def send_request(url):
 
 def create_readme(url):
     f = open("README.md", "w")
-    f.write("# dizipal-finder\nher seferinde aramak istemeyenler için.\n\nson bulunan site: " + str(url))
+    f.write("# dizipal-finder\nher seferinde aramak istemeyenler için.\n\ndizipal güncel adres: " + str(url))
     f.close()
 
 def get_last_url_digit():
