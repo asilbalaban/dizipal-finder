@@ -12,9 +12,14 @@ def send_request(url):
                 return url
             else:
                 return None
+    except:
+        pass
 
-    except Exception as e:
-        e
+
+def create_readme(url):
+    f = open("README.md", "w")
+    f.write("# dizipal-finder\nher seferinde aramak istemeyenler için.\n\nson bulunan site: " + str(url))
+    f.close()
 
 number = 162
 while(number < 1000):
@@ -22,7 +27,7 @@ while(number < 1000):
     website = send_request(url)
     if(website != None):
         print(website)
-
+        create_readme(url)
         exit()
     else:
         number += 1
