@@ -3,11 +3,11 @@ from bs4 import BeautifulSoup
 
 def send_request(url):
     try:
-        reqs = requests.get(url)
+        reqs = requests.get(url, allow_redirects=False)
         soup = BeautifulSoup(reqs.text, 'html.parser')
         for title in soup.find_all('title'):
             print(url + " internet sitesi başlığı: " + title.get_text())
-            if(title.get_text() == 'DiziPAL – yabancı dizi, film ve anime izle'):
+            if(title.get_text() == 'Dizipal | Yabancı Dizi izle | Film izle'):
                 return url
             else:
                 return None
@@ -27,7 +27,7 @@ def get_last_url_digit():
 def main():
     digit = int(get_last_url_digit())
     while(True):
-        url = "http://www.dizipal" + str(digit) + ".com/"
+        url = "https://dizipal" + str(digit) + ".cloud/"
         print(url)
         website = send_request(url)
         if(website != None):
