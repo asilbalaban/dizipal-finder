@@ -6,8 +6,8 @@ def send_request(url):
         reqs = requests.get(url, allow_redirects=False)
         soup = BeautifulSoup(reqs.text, 'html.parser')
         for title in soup.find_all('title'):
-            print(url + " internet sitesi başlığı: " + title.get_text())
-            if(title.get_text() == 'Dizipal | Yabancı Dizi izle | Film izle'):
+            print(url + " internet sitesi başlığı: " + title.get_text().lower())
+            if("dizipal" in title.get_text().lower()):
                 return url
             else:
                 return None
@@ -27,7 +27,7 @@ def get_last_url_digit():
 def main():
     digit = int(get_last_url_digit())
     while(True):
-        url = "https://dizipal" + str(digit) + ".cloud/"
+        url = "https://dizipal" + str(digit) + ".com/"
         print(url)
         website = send_request(url)
         if(website != None):
